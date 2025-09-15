@@ -70,10 +70,17 @@
   </ItemGroup>
 
   <!--
-    Build Thunderstore package by calling `dotnet build -c Release -target:PackTS -v d` (verbosity detailed).
+    To make building Thunderstore packages uncoupled from release builds, swap
+    the positions of the commented out Target line:
+    <Target Name="PackTS" DependsOnTargets="Build" Condition="$(ThunderstorePackable) != 'false'">
+    and the one below.
+
+    With Thunderstore package builds being uncoupled from release builds,
+    build Thunderstore packages by calling `dotnet build -c Release -target:PackTS -v d` (verbosity detailed).
+
     Publish to Thunderstore by including `-property:PublishTS=true` in the command.
   -->
-  <Target Name="PackTS" DependsOnTargets="Build" Condition="$(ThunderstorePackable) != 'false'">
+  <Target Name="PackTS" AfterTargets="Build" Condition="'$(Configuration)' == 'Release' And '$(ThunderstorePackable)' != 'false'">
     <Error
       Text=" PackTS must be called with Release configuration."
       Condition="'$(Configuration)' != 'Release'"
