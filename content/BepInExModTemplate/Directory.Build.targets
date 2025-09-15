@@ -6,7 +6,7 @@
   -->
 <!--#endif -->
 
-  <!-- Set extra NuGet sources -->
+  <!-- Set additional NuGet sources -->
   <PropertyGroup>
     <RestoreAdditionalProjectSources>
       https://nuget.bepinex.dev/v3/index.json;
