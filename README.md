@@ -22,7 +22,7 @@
 Run the following command:
 
 ```bash
-dotnet new install Lokno.BepInExTemplate
+dotnet new install Lokno.EasyDeliveryCo-BepInExTemplate
 ```
 
 > [!TIP]  
